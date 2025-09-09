@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  
+    <title>funding.json - An open manifest schema for open source projects</title>
+  
+  
+  
+    <link rel="alternate" type="application/rss+xml" title="RSS" href="https://fundingjson.org/rss.xml">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta property="og:image" content="https://fundingjson.org/static/thumb.png?h=544b13289e30b7e0a8bb">
+  <link rel="shortcut icon" href="https://fundingjson.org/static/favicon.png" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,400..600;1,14..32,400..600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" media="screen" href="https://fundingjson.org/static/base.css?h=edc237bf159c9d2ce8da" />
+  <link rel="stylesheet" type="text/css" media="screen" href="https://fundingjson.org/static/style.css?h=da38d9bc31d24e79a42e" />
+</head>
+
+<body>
+<div class="container main">
+  <header class="header">
+    <nav class="nav">
+      <input type="checkbox" id="nav-toggle" />
+      <label for="nav-toggle" class="nav-toggle-label" aria-label="Toggle nav">☰</label>
+
+      <div class="items">
+        <a href="https://fundingjson.org">Home</a>
+      </div>
+    </nav>
+  </header>
+  <section class="section content">
+    
+<section class="page">
+  <p>funding.json is a manifest that enables Free and Open Source Software (FOSS) projects to declare their financial needs in a machine-readable format. The self-contained JSON file can be easily published in repositories or websites, functioning similarly to robots.txt or Progressive Web App manifests.</p>
+<p>By making funding requirements publicly crawlable and indexable, funding.json makes aims to bring discoverablity to FOSS projects, helping connect those seeking financial support with potential backers.</p>
+<h2 id="schema">Schema</h2>
+<p>The current version is v1.0.0. A human readable version with comments is shown below. The JSON schema (json-schema.org) is <a href="/schema/v1.0.0/funding.schema.json">available here</a>.</p>
+<pre data-lang="json" style="background-color:#fefbec;color:#6e6b5e;" class="language-json "><code class="language-json" data-lang="json"><span>{
+</span><span>    &quot;</span><span style="color:#60ac39;">version</span><span>&quot;: &quot;</span><span style="color:#60ac39;">v1.0.0</span><span>&quot;,
+</span><span>
+</span><span>    </span><span style="color:#999580;">// Required. The entity associated with the project, soliciting funds.
+</span><span>    </span><span style="color:#999580;">// This can be an individual, organisation, community etc.
+</span><span>    &quot;</span><span style="color:#60ac39;">entity</span><span>&quot;: {
+</span><span>        &quot;</span><span style="color:#60ac39;">type</span><span>&quot;: &quot;&quot;,                     </span><span style="color:#999580;">// Required. [individual, group, organisation, other]. Use the closest approximation.
+</span><span>        &quot;</span><span style="color:#60ac39;">role</span><span>&quot;: &quot;&quot;,                     </span><span style="color:#999580;">// Required. [owner, steward, maintainer, contributor, other]. Use the closest approximation.
+</span><span>        &quot;</span><span style="color:#60ac39;">name</span><span>&quot;: &quot;&quot;,                     </span><span style="color:#999580;">// Required. Name of the entity. Max len 250.
+</span><span>        &quot;</span><span style="color:#60ac39;">email</span><span>&quot;: &quot;&quot;,                    </span><span style="color:#999580;">// Required. Max len 250.
+</span><span>        &quot;</span><span style="color:#60ac39;">phone</span><span>&quot;: &quot;&quot;,                    </span><span style="color:#999580;">// Optional. Generally suitable for organisations. Max len 32.
+</span><span>        &quot;</span><span style="color:#60ac39;">description</span><span>&quot;: &quot;&quot;,              </span><span style="color:#999580;">// Required. Information about the entity. Max len 2000.
+</span><span>        &quot;</span><span style="color:#60ac39;">webpageUrl</span><span>&quot;: {
+</span><span>            &quot;</span><span style="color:#60ac39;">url</span><span>&quot;: &quot;&quot;,                  </span><span style="color:#999580;">// Required. Webpage with information about the entity. Starts with https:// or http://. Max len 250.
+</span><span>            &quot;</span><span style="color:#60ac39;">wellKnown</span><span>&quot;: &quot;&quot;             </span><span style="color:#999580;">// Optional. If the above URL&#39;s hostname does not match the hostname of the funding.json manifest, this establishes provenance. Starts with https:// or http://. Max len 250.
+</span><span>        }
+</span><span>    },
+</span><span>
+</span><span>    </span><span style="color:#999580;">// Optional. One or more projects for which the funding is solicited.
+</span><span>    &quot;</span><span style="color:#60ac39;">projects</span><span>&quot;: [{
+</span><span>        &quot;</span><span style="color:#60ac39;">guid</span><span>&quot;: &quot;&quot;,                     </span><span style="color:#999580;">// Required. A short unique ID for the project. Lowercase-alphanumeric-dashes only. eg: my-cool-project. Max len 32.
+</span><span>        &quot;</span><span style="color:#60ac39;">name</span><span>&quot;: &quot;&quot;,                     </span><span style="color:#999580;">// Required. Name of the project. Max len 250.
+</span><span>        &quot;</span><span style="color:#60ac39;">description</span><span>&quot;: &quot;&quot;,              </span><span style="color:#999580;">// Required. Description of the project. Max len 2000.
+</span><span>        &quot;</span><span style="color:#60ac39;">webpageUrl</span><span>&quot;: {
+</span><span>            &quot;</span><span style="color:#60ac39;">url</span><span>&quot;: &quot;&quot;,                  </span><span style="color:#999580;">// Required. Webpage with information about the project. Starts with https:// or http://. Max len 250.
+</span><span>            &quot;</span><span style="color:#60ac39;">wellKnown</span><span>&quot;: &quot;&quot;             </span><span style="color:#999580;">// Optional. If the above URL&#39;s hostname does not match the hostname of the funding.json manifest, this establishes provenance. Starts with https:// or http://. Max len 250.
+</span><span>        },
+</span><span>        &quot;</span><span style="color:#60ac39;">repositoryUrl</span><span>&quot;: {
+</span><span>            &quot;</span><span style="color:#60ac39;">url</span><span>&quot;: &quot;&quot;,                  </span><span style="color:#999580;">// Required. URL of the repository where the project&#39;s source code and other assets are available. Starts with https:// or http://. Max len 250.
+</span><span>            &quot;</span><span style="color:#60ac39;">wellKnown</span><span>&quot;: &quot;&quot;             </span><span style="color:#999580;">// Optional. If the above URL&#39;s hostname does not match the hostname of the funding.json manifest, this establishes provenance. Starts with https:// or http://. Max len 250.
+</span><span>        },
+</span><span>        &quot;</span><span style="color:#60ac39;">licenses</span><span>&quot;: [],                 </span><span style="color:#999580;">// Required. The project&#39;s licenses (up to 5). For standard licenses, use the license ID from the SDPX index prefixed by &quot;spdx:&quot;. eg: &quot;spdx:GPL-3.0&quot;, &quot;spdx:CC-BY-SA-4.0&quot;
+</span><span>        &quot;</span><span style="color:#60ac39;">tags</span><span>&quot;: []                      </span><span style="color:#999580;">// Required. Up to 10 general tags describing the project. Lowercase-alphanumeric-dashes (max 32 chars). eg: [&quot;programming&quot;, &quot;developer-tools&quot;]. For reference, see tags.txt
+</span><span>    }],
+</span><span>
+</span><span>    </span><span style="color:#999580;">// Required.
+</span><span>    &quot;</span><span style="color:#60ac39;">funding</span><span>&quot;: {
+</span><span>        </span><span style="color:#999580;">// Required. This describes one or more channels via which the entity can receive funds.
+</span><span>        &quot;</span><span style="color:#60ac39;">channels</span><span>&quot;: [{
+</span><span>            &quot;</span><span style="color:#60ac39;">guid</span><span>&quot;: &quot;&quot;,                 </span><span style="color:#999580;">// Required. A short unique ID for the channel. Lowercase-alphanumeric-dashes only. eg: mybank, my-paypal. Max len 32.
+</span><span>            &quot;</span><span style="color:#60ac39;">type</span><span>&quot;: &quot;&quot;,                 </span><span style="color:#999580;">// Required. [bank, payment-provider, cheque, cash, other].
+</span><span>            &quot;</span><span style="color:#60ac39;">address</span><span>&quot;: &quot;&quot;,              </span><span style="color:#999580;">// Optional. A short unstructured textual representation of the payment address for the channel. eg: &quot;Account: 12345 (branch: ABCX)&quot;, &quot;mypaypal@domain.com&quot;, &quot;https://payment-url.com&quot;, or a physical address for cheques. Max len 250.
+</span><span>            &quot;</span><span style="color:#60ac39;">description</span><span>&quot;: &quot;&quot;           </span><span style="color:#999580;">// Optional. Any additional description or instructions for the payment channel. Max len 500.
+</span><span>        }],
+</span><span>
+</span><span>        </span><span style="color:#999580;">// Required. One or more funding and payment plans.
+</span><span>        &quot;</span><span style="color:#60ac39;">plans</span><span>&quot;: [{
+</span><span>            &quot;</span><span style="color:#60ac39;">guid</span><span>&quot;: &quot;&quot;,                 </span><span style="color:#999580;">// Required. A short unique ID for the plan. Lowercase-alphanumeric-dashes only. eg: mybank, paypal. Max len 32.
+</span><span>            &quot;</span><span style="color:#60ac39;">status</span><span>&quot;: &quot;&quot;,               </span><span style="color:#999580;">// Required. [active, inactive]. Indicates whether this plan is currently active or inactive.
+</span><span>            &quot;</span><span style="color:#60ac39;">name</span><span>&quot;: &quot;&quot;,                 </span><span style="color:#999580;">// Required. Name of the funding plan. eg: &quot;Starter support plan&quot;, &quot;Infra hosting&quot;, &quot;Monthly funding plan&quot;.
+</span><span>            &quot;</span><span style="color:#60ac39;">description</span><span>&quot;: &quot;&quot;,          </span><span style="color:#999580;">// Optional. Any additional description or instructions for the funding plan.
+</span><span>            &quot;</span><span style="color:#60ac39;">amount</span><span>&quot;: </span><span style="color:#b65611;">0</span><span>,                </span><span style="color:#999580;">// Required. The solicited amount for this plan. 0 is a wildcard that indicates &quot;any amount&quot;.
+</span><span>            &quot;</span><span style="color:#60ac39;">currency</span><span>&quot;: &quot;&quot;,             </span><span style="color:#999580;">// Required. Three letter ISO 4217 currency code. eg: USD
+</span><span>            &quot;</span><span style="color:#60ac39;">frequency</span><span>&quot;: &quot;&quot;,            </span><span style="color:#999580;">// Required. [one-time, weekly, fortnightly, monthly, yearly, other]
+</span><span>            &quot;</span><span style="color:#60ac39;">channels</span><span>&quot;: []              </span><span style="color:#999580;">// Required. One or more channel IDs defined in channels[] via which this plan can accept payments.
+</span><span>        }],
+</span><span>
+</span><span>        </span><span style="color:#999580;">// Optional. A simple summary of funding history. Only include if at least one, either income or expenses, have to be communicated.
+</span><span>        &quot;</span><span style="color:#60ac39;">history</span><span>&quot;: [{
+</span><span>            &quot;</span><span style="color:#60ac39;">year</span><span>&quot;: </span><span style="color:#b65611;">2024</span><span>,               </span><span style="color:#999580;">// Required. Year (fiscal, preferably).
+</span><span>            &quot;</span><span style="color:#60ac39;">income</span><span>&quot;: </span><span style="color:#b65611;">0</span><span>,                </span><span style="color:#999580;">// Optional.
+</span><span>            &quot;</span><span style="color:#60ac39;">expenses</span><span>&quot;: </span><span style="color:#b65611;">0</span><span>,              </span><span style="color:#999580;">// Optional.
+</span><span>            &quot;</span><span style="color:#60ac39;">taxes</span><span>&quot;: </span><span style="color:#b65611;">0</span><span>,                 </span><span style="color:#999580;">// Optional.
+</span><span>            &quot;</span><span style="color:#60ac39;">currency</span><span>&quot;: &quot;&quot;,             </span><span style="color:#999580;">// Required. Three letter ISO 4217 currency code. eg: USD
+</span><span>            &quot;</span><span style="color:#60ac39;">description</span><span>&quot;: &quot;&quot;           </span><span style="color:#999580;">// Optional. Any additional description. Max length 500.
+</span><span>        }]
+</span><span>    }
+</span><span>}
+</span><span>
+</span></code></pre>
+<p><a href="#" data-copy-clipboard>Copy</a></p>
+<hr />
+<h2 id="example">Example</h2>
+<p>Assuming that the manifest is located at <code>https://example.com/funding.json</code></p>
+<pre data-lang="json" style="background-color:#fefbec;color:#6e6b5e;" class="language-json "><code class="language-json" data-lang="json"><span>{
+</span><span>    &quot;</span><span style="color:#60ac39;">version</span><span>&quot;: &quot;</span><span style="color:#60ac39;">v1.0.0</span><span>&quot;,
+</span><span>    &quot;</span><span style="color:#60ac39;">entity</span><span>&quot;: {
+</span><span>        &quot;</span><span style="color:#60ac39;">type</span><span>&quot;: &quot;</span><span style="color:#60ac39;">individual</span><span>&quot;,
+</span><span>        &quot;</span><span style="color:#60ac39;">role</span><span>&quot;: &quot;</span><span style="color:#60ac39;">maintainer</span><span>&quot;,
+</span><span>        &quot;</span><span style="color:#60ac39;">name</span><span>&quot;: &quot;</span><span style="color:#60ac39;">The One (demo)</span><span>&quot;,
+</span><span>        &quot;</span><span style="color:#60ac39;">email</span><span>&quot;: &quot;</span><span style="color:#60ac39;">neo@example.com</span><span>&quot;,
+</span><span>        &quot;</span><span style="color:#60ac39;">phone</span><span>&quot;: &quot;&quot;,
+</span><span>        &quot;</span><span style="color:#60ac39;">description</span><span>&quot;: &quot;</span><span style="color:#60ac39;">I&#39;m a developer interested in preserving digital freedoms and the decentralised and open nature of the internet. I like breaking down barriers in the cyberspace with FOSS technologies.</span><span style="color:#1fad83;">\n\n</span><span style="color:#60ac39;">Sometimes I can&#39;t shake the feeling that the system we&#39;re living in isn&#39;t quite what it seems. That there is no spoon.</span><span style="color:#1fad83;">\n\n</span><span style="color:#60ac39;">PS: This is a dummy listing.</span><span>&quot;,
+</span><span>        &quot;</span><span style="color:#60ac39;">webpageUrl</span><span>&quot;: {
+</span><span>            &quot;</span><span style="color:#60ac39;">url</span><span>&quot;: &quot;</span><span style="color:#60ac39;">https://example.com</span><span>&quot;,
+</span><span>            &quot;</span><span style="color:#60ac39;">wellKnown</span><span>&quot;: &quot;&quot;
+</span><span>        }
+</span><span>    },
+</span><span>    &quot;</span><span style="color:#60ac39;">projects</span><span>&quot;: [{
+</span><span>        &quot;</span><span style="color:#60ac39;">guid</span><span>&quot;: &quot;</span><span style="color:#60ac39;">zombo-app</span><span>&quot;,
+</span><span>        &quot;</span><span style="color:#60ac39;">name</span><span>&quot;: &quot;</span><span style="color:#60ac39;">Zombo App (demo)</span><span>&quot;,
+</span><span>        &quot;</span><span style="color:#60ac39;">description</span><span>&quot;: &quot;</span><span style="color:#60ac39;">The Zombo App is a database application that solves many problems and makes anything possible. Anything at all. Its possibilities are only limited by the user&#39;s own imagination.</span><span style="color:#1fad83;">\n\n</span><span style="color:#60ac39;">It has been in active development for a decade and is used by millions of people worldwide. It is the next frontier.</span><span style="color:#1fad83;">\n\n</span><span style="color:#60ac39;">PS: This is a dummy demo listing.</span><span>&quot;,
+</span><span>        &quot;</span><span style="color:#60ac39;">webpageUrl</span><span>&quot;: {
+</span><span>            &quot;</span><span style="color:#60ac39;">url</span><span>&quot;: &quot;</span><span style="color:#60ac39;">https://example.com/projects/zombo</span><span>&quot;
+</span><span>        },
+</span><span>        &quot;</span><span style="color:#60ac39;">repositoryUrl</span><span>&quot;: {
+</span><span>            &quot;</span><span style="color:#60ac39;">url</span><span>&quot;: &quot;</span><span style="color:#60ac39;">https://github.com/example/zombo-app</span><span>&quot;,
+</span><span>            &quot;</span><span style="color:#60ac39;">wellKnown</span><span>&quot;: &quot;</span><span style="color:#60ac39;">https://github.com/example/zombo-app/blob/main/.well-known/funding-manifest-urls</span><span>&quot;
+</span><span>        },
+</span><span>        &quot;</span><span style="color:#60ac39;">licenses</span><span>&quot;: [&quot;</span><span style="color:#60ac39;">spdx:AGPL-3.0</span><span>&quot;],
+</span><span>        &quot;</span><span style="color:#60ac39;">tags</span><span>&quot;: [&quot;</span><span style="color:#60ac39;">database</span><span>&quot;, &quot;</span><span style="color:#60ac39;">columnar-database</span><span>&quot;, &quot;</span><span style="color:#60ac39;">high-performance</span><span>&quot;, &quot;</span><span style="color:#60ac39;">key-value-store</span><span>&quot;]
+</span><span>    },
+</span><span>    {
+</span><span>        &quot;</span><span style="color:#60ac39;">guid</span><span>&quot;: &quot;</span><span style="color:#60ac39;">vb-gooey</span><span>&quot;,
+</span><span>        &quot;</span><span style="color:#60ac39;">name</span><span>&quot;: &quot;</span><span style="color:#60ac39;">VB Gooey IP tracer (demo)</span><span>&quot;,
+</span><span>        &quot;</span><span style="color:#60ac39;">description</span><span>&quot;: &quot;</span><span style="color:#60ac39;">Using quantum-entangled packet sniffers, this cutting-edge Visual Basic GUI IP Tracer employs hyper-threaded blockchain algorithms to decrypt the target&#39;s digital DNA signature. The system&#39;s neural network of overclocked RAM crystals generates a real-time holographic map of cyberspace, pinpointing the perp&#39;s location with nanosecond precision.</span><span style="color:#1fad83;">\n\n</span><span style="color:#60ac39;">In addition, its turbo-encabulated flux capacitor and multi-dimensional firewall penetrator, allows any hyper-dimensional air-gapped network to be broken into with ease.</span><span style="color:#1fad83;">\n\n\n\n</span><span style="color:#60ac39;">PS: This is a dummy demo listing.</span><span>&quot;,
+</span><span>        &quot;</span><span style="color:#60ac39;">webpageUrl</span><span>&quot;: {
+</span><span>            &quot;</span><span style="color:#60ac39;">url</span><span>&quot;: &quot;</span><span style="color:#60ac39;">https://vb-gooey-ip-tracer.net</span><span>&quot;,
+</span><span>            &quot;</span><span style="color:#60ac39;">wellKnown</span><span>&quot;: &quot;</span><span style="color:#60ac39;">https://vb-gooey-ip-tracer.net/.well-known/funding-manifest-urls</span><span>&quot;
+</span><span>        },
+</span><span>        &quot;</span><span style="color:#60ac39;">repositoryUrl</span><span>&quot;: {
+</span><span>            &quot;</span><span style="color:#60ac39;">url</span><span>&quot;: &quot;</span><span style="color:#60ac39;">https://github.com/example/vb-gooey-ip-tracer</span><span>&quot;,
+</span><span>            &quot;</span><span style="color:#60ac39;">wellKnown</span><span>&quot;: &quot;</span><span style="color:#60ac39;">https://github.com/example/vb-gooey-ip-tracer/blob/main/.well-known/funding-manifest-urls</span><span>&quot;
+</span><span>        },
+</span><span>        &quot;</span><span style="color:#60ac39;">licenses</span><span>&quot;: [&quot;</span><span style="color:#60ac39;">spdx:MIT</span><span>&quot;],
+</span><span>        &quot;</span><span style="color:#60ac39;">tags</span><span>&quot;: [&quot;</span><span style="color:#60ac39;">high-performance</span><span>&quot;, &quot;</span><span style="color:#60ac39;">security</span><span>&quot;, &quot;</span><span style="color:#60ac39;">gui</span><span>&quot;, &quot;</span><span style="color:#60ac39;">networking</span><span>&quot;]
+</span><span>    }],
+</span><span>    &quot;</span><span style="color:#60ac39;">funding</span><span>&quot;: {
+</span><span>        &quot;</span><span style="color:#60ac39;">channels</span><span>&quot;: [
+</span><span>            {
+</span><span>                &quot;</span><span style="color:#60ac39;">guid</span><span>&quot;: &quot;</span><span style="color:#60ac39;">mybank</span><span>&quot;,
+</span><span>                &quot;</span><span style="color:#60ac39;">type</span><span>&quot;: &quot;</span><span style="color:#60ac39;">bank</span><span>&quot;,
+</span><span>                &quot;</span><span style="color:#60ac39;">address</span><span>&quot;: &quot;&quot;,
+</span><span>                &quot;</span><span style="color:#60ac39;">description</span><span>&quot;: &quot;</span><span style="color:#60ac39;">Will accept direct bank transfers. Please e-mail me for details.</span><span>&quot;
+</span><span>            },
+</span><span>            {
+</span><span>                &quot;</span><span style="color:#60ac39;">guid</span><span>&quot;: &quot;</span><span style="color:#60ac39;">mypay</span><span>&quot;,
+</span><span>                &quot;</span><span style="color:#60ac39;">type</span><span>&quot;: &quot;</span><span style="color:#60ac39;">payment-provider</span><span>&quot;,
+</span><span>                &quot;</span><span style="color:#60ac39;">address</span><span>&quot;: &quot;</span><span style="color:#60ac39;">https://example.com/payme/@myid</span><span>&quot;,
+</span><span>                &quot;</span><span style="color:#60ac39;">description</span><span>&quot;: &quot;</span><span style="color:#60ac39;">Pay with your debit/credit card through this gateway and setup recurring subscriptions.</span><span>&quot;
+</span><span>            }
+</span><span>        ],
+</span><span>        &quot;</span><span style="color:#60ac39;">plans</span><span>&quot;: [
+</span><span>            {
+</span><span>                &quot;</span><span style="color:#60ac39;">guid</span><span>&quot;: &quot;</span><span style="color:#60ac39;">hosting-monthly</span><span>&quot;,
+</span><span>                &quot;</span><span style="color:#60ac39;">status</span><span>&quot;: &quot;</span><span style="color:#60ac39;">active</span><span>&quot;,
+</span><span>                &quot;</span><span style="color:#60ac39;">name</span><span>&quot;: &quot;</span><span style="color:#60ac39;">Hosting support</span><span>&quot;,
+</span><span>                &quot;</span><span style="color:#60ac39;">description</span><span>&quot;: &quot;</span><span style="color:#60ac39;">This will cover the monthly server hosting costs for the projects.</span><span>&quot;,
+</span><span>                &quot;</span><span style="color:#60ac39;">amount</span><span>&quot;: </span><span style="color:#b65611;">250</span><span>,
+</span><span>                &quot;</span><span style="color:#60ac39;">currency</span><span>&quot;: &quot;</span><span style="color:#60ac39;">USD</span><span>&quot;,
+</span><span>                &quot;</span><span style="color:#60ac39;">frequency</span><span>&quot;: &quot;</span><span style="color:#60ac39;">monthly</span><span>&quot;,
+</span><span>                &quot;</span><span style="color:#60ac39;">channels</span><span>&quot;: [&quot;</span><span style="color:#60ac39;">mypay</span><span>&quot;]
+</span><span>            },
+</span><span>            {
+</span><span>                &quot;</span><span style="color:#60ac39;">guid</span><span>&quot;: &quot;</span><span style="color:#60ac39;">developer-time</span><span>&quot;,
+</span><span>                &quot;</span><span style="color:#60ac39;">status</span><span>&quot;: &quot;</span><span style="color:#60ac39;">active</span><span>&quot;,
+</span><span>                &quot;</span><span style="color:#60ac39;">name</span><span>&quot;: &quot;</span><span style="color:#60ac39;">Developer compensation</span><span>&quot;,
+</span><span>                &quot;</span><span style="color:#60ac39;">description</span><span>&quot;: &quot;</span><span style="color:#60ac39;">This will cover the cost of one developer working part-time on the projects.</span><span>&quot;,
+</span><span>                &quot;</span><span style="color:#60ac39;">amount</span><span>&quot;: </span><span style="color:#b65611;">1000</span><span>,
+</span><span>                &quot;</span><span style="color:#60ac39;">currency</span><span>&quot;: &quot;</span><span style="color:#60ac39;">USD</span><span>&quot;,
+</span><span>                &quot;</span><span style="color:#60ac39;">frequency</span><span>&quot;: &quot;</span><span style="color:#60ac39;">monthly</span><span>&quot;,
+</span><span>                &quot;</span><span style="color:#60ac39;">channels</span><span>&quot;: [&quot;</span><span style="color:#60ac39;">mybank</span><span>&quot;]
+</span><span>            },
+</span><span>            {
+</span><span>                &quot;</span><span style="color:#60ac39;">guid</span><span>&quot;: &quot;</span><span style="color:#60ac39;">angel-plan</span><span>&quot;,
+</span><span>                &quot;</span><span style="color:#60ac39;">status</span><span>&quot;: &quot;</span><span style="color:#60ac39;">active</span><span>&quot;,
+</span><span>                &quot;</span><span style="color:#60ac39;">name</span><span>&quot;: &quot;</span><span style="color:#60ac39;">Goodwill plan</span><span>&quot;,
+</span><span>                &quot;</span><span style="color:#60ac39;">description</span><span>&quot;: &quot;</span><span style="color:#60ac39;">Pay anything you wish to show your goodwill for the project.</span><span>&quot;,
+</span><span>                &quot;</span><span style="color:#60ac39;">amount</span><span>&quot;: </span><span style="color:#b65611;">0</span><span>,
+</span><span>                &quot;</span><span style="color:#60ac39;">currency</span><span>&quot;: &quot;</span><span style="color:#60ac39;">USD</span><span>&quot;,
+</span><span>                &quot;</span><span style="color:#60ac39;">frequency</span><span>&quot;: &quot;</span><span style="color:#60ac39;">one-time</span><span>&quot;,
+</span><span>                &quot;</span><span style="color:#60ac39;">channels</span><span>&quot;: [&quot;</span><span style="color:#60ac39;">mybank</span><span>&quot;, &quot;</span><span style="color:#60ac39;">mypay</span><span>&quot;]
+</span><span>            }
+</span><span>        ],
+</span><span>        &quot;</span><span style="color:#60ac39;">history</span><span>&quot;: [
+</span><span>            {&quot;</span><span style="color:#60ac39;">year</span><span>&quot;: </span><span style="color:#b65611;">2020</span><span>, &quot;</span><span style="color:#60ac39;">income</span><span>&quot;: </span><span style="color:#b65611;">10000</span><span>, &quot;</span><span style="color:#60ac39;">expenses</span><span>&quot;: </span><span style="color:#b65611;">2000</span><span>, &quot;</span><span style="color:#60ac39;">taxes</span><span>&quot;: </span><span style="color:#b65611;">200</span><span>, &quot;</span><span style="color:#60ac39;">currency</span><span>&quot;: &quot;</span><span style="color:#60ac39;">USD</span><span>&quot;, &quot;</span><span style="color:#60ac39;">description</span><span>&quot;: &quot;</span><span style="color:#60ac39;">Started accepting donations for the first time.</span><span>&quot;},
+</span><span>            {&quot;</span><span style="color:#60ac39;">year</span><span>&quot;: </span><span style="color:#b65611;">2021</span><span>, &quot;</span><span style="color:#60ac39;">income</span><span>&quot;: </span><span style="color:#b65611;">15000</span><span>, &quot;</span><span style="color:#60ac39;">expenses</span><span>&quot;: </span><span style="color:#b65611;">5000</span><span>, &quot;</span><span style="color:#60ac39;">taxes</span><span>&quot;: </span><span style="color:#b65611;">500</span><span>, &quot;</span><span style="color:#60ac39;">currency</span><span>&quot;: &quot;</span><span style="color:#60ac39;">USD</span><span>&quot;, &quot;</span><span style="color:#60ac39;">description</span><span>&quot;: &quot;&quot;},
+</span><span>            {&quot;</span><span style="color:#60ac39;">year</span><span>&quot;: </span><span style="color:#b65611;">2022</span><span>, &quot;</span><span style="color:#60ac39;">income</span><span>&quot;: </span><span style="color:#b65611;">30000</span><span>, &quot;</span><span style="color:#60ac39;">expenses</span><span>&quot;: </span><span style="color:#b65611;">10000</span><span>, &quot;</span><span style="color:#60ac39;">taxes</span><span>&quot;: </span><span style="color:#b65611;">2000</span><span>, &quot;</span><span style="color:#60ac39;">currency</span><span>&quot;: &quot;</span><span style="color:#60ac39;">USD</span><span>&quot;, &quot;</span><span style="color:#60ac39;">description</span><span>&quot;: &quot;&quot;},
+</span><span>            {&quot;</span><span style="color:#60ac39;">year</span><span>&quot;: </span><span style="color:#b65611;">2023</span><span>, &quot;</span><span style="color:#60ac39;">income</span><span>&quot;: </span><span style="color:#b65611;">25000</span><span>, &quot;</span><span style="color:#60ac39;">expenses</span><span>&quot;: </span><span style="color:#b65611;">15000</span><span>, &quot;</span><span style="color:#60ac39;">taxes</span><span>&quot;: </span><span style="color:#b65611;">1500</span><span>, &quot;</span><span style="color:#60ac39;">currency</span><span>&quot;: &quot;</span><span style="color:#60ac39;">USD</span><span>&quot;, &quot;</span><span style="color:#60ac39;">description</span><span>&quot;: &quot;</span><span style="color:#60ac39;">There was a dip, but we see this improving.</span><span>&quot;}
+</span><span>        ]
+</span><span>    }
+</span><span>}
+</span><span>
+</span></code></pre>
+<p><a href="#" data-copy-clipboard>Copy</a></p>
+<br />
+<p>For repository hosting platforms like GitHub, the manifest can be checked into the project repository directly, eg: <code>https://github.com/example/coolapp/blob/main/funding.json</code></p>
+<hr />
+<h3 id="wellknown">wellKnown</h3>
+<p>If a <code>funding.json</code> manifest lists URLs (such as webpage or repository) that are hosted on a different hostname than the manifest itself, those URLs are considered <strong>unverified</strong>. For example, if <code>example.com/funding.json</code> includes a project with the URL <code>project.net/repository</code>, that project URL is unverified because ther is no way to know whether <code>example.com</code> is authorized to solicit funding on behalf of <code>project.net</code>.</p>
+<p>To verify URLs that do not share the same hostname, a <code>wellKnown</code> URL can be provided that points to a <code>/.well-known/funding-manifest-urls</code> file.</p>
+<p>This file must contain the URL of the <code>funding.json</code> manifest URLs that reference it. For instance, <code>project.net/.well-known/funding-manifest-urls</code> can contain a reference to <code>example.com/funding.json</code> proving that they are associated.</p>
+<p>The file can contain multiple URLs, one per line. This establishes provenance and verifies that that the publisher of the manifest is authorised to solicit funding on behalf of the URLs (entity, projects) described in the manifest. This follows the <a href="https://en.wikipedia.org/wiki/Well-known_URI">.well-known</a> convention. An example scenario is described below.</p>
+<table><thead><tr><th></th><th></th></tr></thead><tbody>
+<tr><td>Manifest location</td><td>https://example.com/funding.json</td></tr>
+<tr><td>Project URL referenced in the manifest</td><td>https://project.net</td></tr>
+<tr><td>Expected <code>wellKnown</code> along with the project URL</td><td>https://project.net/.well-known/funding-manifest-urls</td></tr>
+<tr><td>Contents of the <code>wellKnown</code> file</td><td><code>https://example.com/funding.json</code></td></tr>
+</tbody></table>
+<h3 id="tags">tags</h3>
+<p>While the <code>tags[]</code> field under projects is meant for arbitrary lowercase-alphanumeric-dash strings to describe the projects, <a href="/static/project-tags.txt">project-tags.txt</a> can be used as a reference list for uniformity.</p>
+<hr />
+<h2 id="tools">Tools</h2>
+<ul>
+<li><a href="https://dir.floss.fund">FLOSS/fund open directory</a></li>
+<li><a href="https://dir.floss.fund/validate">Live manifest validator</a></li>
+<li><a href="https://vishnukvmd.github.io/funding.json/">Manifest builder UI</a></li>
+</ul>
+ 
+</section>
+
+  </section>
+  
+  <footer class="footer">2024 - 2025 / <a href="https://github.com/funding-manifest/fundingjson.org">Edit</a></footer>
+</div>
+<script>
+(() => {
+  document.querySelectorAll('a[data-copy-clipboard]').forEach(link => {
+    link.addEventListener('click', e => {
+      e.preventDefault();
+      const pre = [...document.querySelectorAll('pre')]
+        .reverse()
+        .find(el => el.compareDocumentPosition(link) & Node.DOCUMENT_POSITION_FOLLOWING);
+      if (pre) {
+        navigator.clipboard.writeText(pre.innerText);
+        const originalText = link.innerText;
+        link.innerText = 'Copied ✓';
+        setTimeout(() => link.innerText = originalText, 2000);
+      }
+    });
+  });
+})();
+</script>
+</body>
+</html>
