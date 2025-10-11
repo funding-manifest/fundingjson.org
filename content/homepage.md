@@ -59,3 +59,26 @@ While the `tags[]` field under projects is meant for arbitrary lowercase-alphanu
 - [FLOSS/fund open directory](https://dir.floss.fund)
 - [Live manifest validator](https://dir.floss.fund/validate)
 - [Manifest builder UI](https://vishnukvmd.github.io/funding.json/)
+
+-----------
+
+## Examples
+
+#### Large projects and institutions
+- [python.org/funding.json](https://python.org/funding.json) ([Render](https://dir.floss.fund/view/@www.python.org))
+- [openstreetmap.org/funding.json](https://openstreetmap.org/funding.json) ([Render](https://dir.floss.fund/view/@www.openstreetmap.org))
+- [ffmpeg.org/funding.json](https://ffmpeg.org/funding.json) ([Render](https://dir.floss.fund/view/@ffmpeg.org))
+- [ziglang.org/funding.json](https://ziglang.org/funding.json) ([Render](https://dir.floss.fund/view/@ziglang.org))
+- [f-droid.org/funding.json](https://f-droid.org/funding.json) ([Render](https://dir.floss.fund/view/@f-droid.org))
+- [matrix.org/funding.json](https://matrix.org/funding.json) ([Render](https://dir.floss.fund/view/@matrix.org))
+- [github.com/openssl/openssl/blob/master/funding.json](https://github.com/openssl/openssl/blob/master/funding.json) ([Render](https://dir.floss.fund/view/@github.com/openssl))
+- [github.com/WorldHealthOrganization/godata/blob/master/funding/funding.json](https://github.com/WorldHealthOrganization/godata/blob/master/funding/funding.json) ([Render](https://dir.floss.fund/view/@github.com/WorldHealthOrganization))
+
+### Individuals
+
+- [sniffnet.net/funding.json](https://sniffnet.net/funding.json) ([Render](https://dir.floss.fund/view/@sniffnet.net))
+- [orhun.dev/funding.json](https://orhun.dev/funding.json) ([Render](https://dir.floss.fund/view/@orhun.dev))
+- [robyn.tech/funding.json](https://robyn.tech/funding.json) ([Render](https://dir.floss.fund/view/@robyn.tech))
+- [rdmp.org/dmbcs/mcron/funding.json](https://rdmp.org/dmbcs/mcron/funding.json) ([Render](https://dir.floss.fund/view/@rdmp.org/dmbcs/mcron))
+- [github.com/dlemstra/dlemstra/blob/main/funding.json](https://github.com/dlemstra/dlemstra/blob/main/funding.json) ([Render](https://dir.floss.fund/view/@github.com/dlemstra))
+- [github.com/GuillaumeGomez/sysinfo/blob/master/funding.json](https://github.com/GuillaumeGomez/sysinfo/blob/master/funding.json) ([Render](https://github.com/GuillaumeGomez/sysinfo/blob/master/funding.json))
