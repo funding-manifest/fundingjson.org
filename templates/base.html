@@ -18,10 +18,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta property="og:image" content="{{ get_url(path="/static/thumb.png", cachebust=true) }}">
   <link rel="shortcut icon" href="{{ get_url(path="/static/favicon.png" ) }}" />
-
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,400..600;1,14..32,400..600&display=swap" rel="stylesheet">
   <link rel="stylesheet" type="text/css" media="screen" href="{{ get_url(path="/static/base.css", cachebust=true) }}" />
   <link rel="stylesheet" type="text/css" media="screen" href="{{ get_url(path="/static/style.css", cachebust=true) }}" />
 </head>
@@ -29,14 +25,14 @@
 <body>
 <div class="container main">
   <header class="header">
-    <nav class="nav">
+<!--     <nav class="nav">
       <input type="checkbox" id="nav-toggle" />
       <label for="nav-toggle" class="nav-toggle-label" aria-label="Toggle nav">☰</label>
 
       <div class="items">
         <a href="{{ get_url(path="/") }}">Home</a>
       </div>
-    </nav>
+    </nav> -->
   </header>
   <section class="section content">
     {% block content %} {% endblock %}

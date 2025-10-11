@@ -1,13 +1,12 @@
 base_url = "https://fundingjson.org"
 
-
 generate_feeds = true
 generate_sitemap = true
 feed_filenames = ["rss.xml"]
 
 [markdown]
 highlight_code = true
-highlight_theme = "base16-atelierdune-light"
+highlight_theme = "subway-moscow"
 
 [extra]
 default_title = "funding.json - An open manifest schema for open source projects"
