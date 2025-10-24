@@ -25,14 +25,15 @@
 <body>
 <div class="container main">
   <header class="header">
-<!--     <nav class="nav">
+    <nav class="nav">
       <input type="checkbox" id="nav-toggle" />
       <label for="nav-toggle" class="nav-toggle-label" aria-label="Toggle nav">☰</label>
 
       <div class="items">
         <a href="{{ get_url(path="/") }}">Home</a>
+        <a href="{{ get_url(path="@/validate.md") }}">Validate</a>
       </div>
-    </nav> -->
+    </nav>
   </header>
   <section class="section content">
     {% block content %} {% endblock %}
@@ -58,5 +59,61 @@
   });
 })();
 </script>
+
+<script>
+	// On form submit, send url and body as form encoded POST data to /api/validate.
+	document.querySelector("form.validate").addEventListener("submit", async (e) => {
+		e.preventDefault();
+
+		document.querySelectorAll(".message").forEach((el) => el.style.display = "none");
+
+		const body = document.querySelector("textarea[name=body]");
+
+		// Format body JSON by parsing and stringifying.
+		try {
+			const json = JSON.parse(body.value);
+		} catch (e) {
+			showError(e.toString());
+			return;
+		}
+
+		const data = new URLSearchParams();
+        data.append("url", document.querySelector("input[name=url]").value);
+        data.append("body", body.value);
+
+		let resp;
+		try {
+			const r = await fetch("https://dir.floss.fund/api/validate", {
+				method: "POST",
+				headers: {
+					"Content-Type": "application/x-www-form-urlencoded",
+				},
+				body: data,
+			});
+
+			resp = await r.json()
+
+			// If response is not 200, read body and show error.
+			if (r.status !== 200) {
+				showError(resp.message);
+				return;
+			}
+		} catch (e) {
+			showError(e.toString());
+			return;
+		}		
+
+		body.value = JSON.stringify(resp.data, null, 2);
+		const err = document.querySelector(".success");
+		err.style.display = 'block';
+	});
+
+	function showError(msg) {
+		const err = document.querySelector(".error");
+		err.style.display = 'block';
+		err.textContent = msg;
+	}
+</script>
+
 </body>
 </html>

@@ -71,8 +71,6 @@ table {
         text-align: left;
         vertical-align: top;
     }
-    th {
-    }
     td {
         background: #fff;
         border: 1px solid #ddd;
@@ -105,7 +103,7 @@ sup a {
     text-underline-offset: 0;
 }
 
-input {
+input, textarea {
     padding: 10px;
     font-size: 1rem;
     border-radius: 3px;
@@ -117,6 +115,9 @@ button {
     border: 0;
     cursor: pointer;
 }
+label {
+    color: #666;
+}
 
 ul.flat {
     list-style-type: none;
@@ -127,18 +128,17 @@ ul li:not(:last-child) {
 }
 
 button, .button {
-    background: var(--black);
+    background: var(--primary);
     text-decoration: none;
     color: #fff;
-    font-weight: bold;
     display: inline-block;
-    padding: 15px 50px;
+    padding: 15px 30px;
     border-radius: 30px;
     border: 0;
 }
     button:hover,
     .button:hover {
-        background: var(--primary);
+        background: var(--black);
         color: #fff;
     }
 
@@ -170,14 +170,6 @@ button, .button {
         cursor: pointer;
     }
 
-.logo img {
-    max-height: 72px;
-    transition: transform 0.7s ease-in-out;
-}
-    .logo img:hover {
-      transform: rotate(30deg); /* Full rotation on hover */
-    }
-
 .intro {
     margin: 5vh 0 60px 0;
     text-align: center;
@@ -193,33 +185,33 @@ button, .button {
         font-weight: normal;
         color: #888;
     }
-    .intro p {
-        color: #777;
-    }
-    .partner img {
-        display: block;
-        width: 75px;
-        margin-top: 15px;
-    }
-    .definition ul {
-        padding: 0 0 0 15px;
-    }
-    .intro .name span {
-        color: var(--primary);
-    }
-    .intro code {
-        padding: 0;
-        background: none;
-    }
 
-
-.recipients table tbody tr td:first-child {
-    width: 70%;
+.validate textarea {
+    height: 50vh;
+    width: 100%;
+    padding: 10px;
+    font-size: 1rem;
 }
-    .recipients table thead tr th:nth-child(3),
-    .recipients table tbody tr td:nth-child(3) {
-        text-align: right;
-    }
+.validate .message {
+    display: none;
+}
+.message {
+    background: #fffaf0;
+    border: 1px solid #f8c481;
+    color: #ae7a13;
+    padding: 15px;
+}
+.error {
+    background: #fbefef;
+    color: #b23f3f;
+    border: 1px solid #fecaca;
+}
+.success {
+    background: #ecfff4;
+    color: #179b4c;
+    border: 1px solid #aee1c3;
+}
+
 
 .footer {
     border-top: 1px solid #e3d2af;
@@ -230,75 +222,6 @@ button, .button {
 }
     .footer a {
         text-decoration: none;
-    }
-
-.posts-list {
-    list-style-type: none;
-    padding: 0;
-}
-    .posts-list .meta {
-        border-top: 1px solid #e3d2af;
-        margin-top: 40px;
-        padding-top: 30px;
-        font-size: 0.875rem;
-    }
-    .posts-list .date {
-        text-align: right;
-        color: #888;
-    }
-    .posts-list li {
-        margin-bottom: 90px;
-    }
-
-    .posts-list .title {
-        margin: 0 0 20px 0;
-    }
-
-.post .title {
-    margin: 0 0 15px 0;
-}
-    .post .date {
-        margin-bottom: 30px;
-    }
-    .post .title a {
-        text-decoration: none;
-    }
-    .post .date {
-        color: #888;
-    }
-
-.avatar {
-    font-size: 0.875rem;
-    display: flex;
-}
-    .avatar img {
-        border-radius: 100%;
-        max-width: 52px;
-    }
-    .avatar div:first-child {
-        flex-basis: 75px;
-        flex-grow: 0;
-    }
-    .avatar div:last-child {
-        flex-grow: 1;
-    }
-    .avatar .title {
-        color: #888;
-        display: block;
-    }
-    .avatar .links {
-        margin-top: 10px;
-    }
-    .avatar .links img {
-        opacity: 0.4;
-        max-height: 20px;
-        margin-right: 5px;
-    }
-
-    .main-post .avatar {
-        margin-top: 85px;
-        position: sticky;
-        top: 30px;
     }
 
 
