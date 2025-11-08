@@ -8,7 +8,7 @@ By making funding requirements publicly crawlable and indexable, funding.json ma
 
 ## Schema
 
-The current version is v1.0.0. A human readable version with comments is shown below. The JSON schema (json-schema.org) is [available here](/schema/v1.0.0/funding.schema.json).
+The current version is v1.1.0. A human readable version with comments is shown below. The JSON schema (json-schema.org) is [available here](/schema/v1.1.0.json).
 
 ```json
 {{ read_file(path="static/static/annotated-funding.json") }}
