@@ -11,7 +11,7 @@ By making funding requirements publicly crawlable and indexable, funding.json ma
 The current version is v1.0.0. A human readable version with comments is shown below. The JSON schema (json-schema.org) is [available here](/schema/v1.0.0/funding.schema.json).
 
 ```json
-{{ read_file(path="static/static/funding.schema.json") }}
+{{ read_file(path="static/static/annotated-funding.json") }}
 ```
 <a href="#" data-copy-clipboard>Copy</a>
 
@@ -21,7 +21,7 @@ The current version is v1.0.0. A human readable version with comments is shown b
 
 Assuming that the manifest is located at `https://example.com/funding.json`
 ```json
-{{ read_file(path="static/static/funding.example.json") }}
+{{ read_file(path="static/static/example-funding.json") }}
 ```
 <a href="#" data-copy-clipboard>Copy</a>
 
