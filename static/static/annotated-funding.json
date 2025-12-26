@@ -2,7 +2,7 @@
     "$schema": "https://fundingjson.org/schema/v1.1.0.json",
 
     // Optional. Version of the manifest contents.
-    "version": "v1.0.0",
+    "version": "v1.1.0",
 
     // Required. The entity associated with the project, soliciting funds.
     // This can be an individual, organisation, community etc.
