@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  
+    <title>Validate funding.json manifest online</title>
+  
+  
+  
+    <link rel="alternate" type="application/rss+xml" title="RSS" href="https://fundingjson.org/rss.xml">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta property="og:image" content="https://fundingjson.org/static/thumb.png?h=544b13289e30b7e0a8bb">
+  <link rel="shortcut icon" href="https://fundingjson.org/static/favicon.png" />
+  <link rel="stylesheet" type="text/css" media="screen" href="https://fundingjson.org/static/base.css?h=edc237bf159c9d2ce8da" />
+  <link rel="stylesheet" type="text/css" media="screen" href="https://fundingjson.org/static/style.css?h=1b4d1685bc3e51c440a6" />
+</head>
+
+<body>
+<div class="container main">
+  <header class="header">
+    <a href="https://fundingjson.org"><img src="https://fundingjson.org/static/logo.svg?h=7045a858e2ba84f58a68" alt="funding.json" /></a>
+    <nav class="nav">
+      <input type="checkbox" id="nav-toggle" />
+      <label for="nav-toggle" class="nav-toggle-label" aria-label="Toggle nav">☰</label>
+
+      <div class="items">
+        <a href="https://fundingjson.org">Home</a>
+        <a href="https://fundingjson.org/validate/">Validate</a>
+      </div>
+    </nav>
+  </header>
+  <section class="section content">
+    
+<section class="page">
+  <h1>Validate funding.json</h1>
+<p>Validate your funding.json manifest syntactically and semantically by pasting the contents here.</p>
+<section class="validate">
+	<div class="message error"></div>
+	<div class="message success">✓ Manifest is valid</div>
+	<br />
+	<form method="post" action="" class="validate">
+		<div>
+			<p>
+				<label id="validate-url">Where will the manifest be hosted?</label>
+				<input name="url" type="url" placeholder="https://example.com/funding.json" id="validate-url" required autofocus />
+			</p>
+			<p>
+				<label for="validate-name">Manifest JSON body</label><br />
+				<textarea name="body" id="validate-body" required placeholder="{}"></textarea>
+			</p>
+			<p>
+				<button type="submit">Validate</button>
+			</p>
+		</div>
+	</form>
+</section>
+ 
+</section>
+
+  </section>
+  
+  <footer class="footer">2024 - 2025 / <a href="https://github.com/funding-manifest/fundingjson.org">Edit</a></footer>
+</div>
+<script>
+(() => {
+  document.querySelectorAll('a[data-copy-clipboard]').forEach(link => {
+    link.addEventListener('click', e => {
+      e.preventDefault();
+      const pre = [...document.querySelectorAll('pre')]
+        .reverse()
+        .find(el => el.compareDocumentPosition(link) & Node.DOCUMENT_POSITION_FOLLOWING);
+      if (pre) {
+        navigator.clipboard.writeText(pre.innerText);
+        const originalText = link.innerText;
+        link.innerText = 'Copied ✓';
+        setTimeout(() => link.innerText = originalText, 2000);
+      }
+    });
+  });
+})();
+</script>
+
+<script>
+	// On form submit, send url and body as form encoded POST data to /api/validate.
+	document.querySelector("form.validate").addEventListener("submit", async (e) => {
+		e.preventDefault();
+
+		document.querySelectorAll(".message").forEach((el) => el.style.display = "none");
+
+		const body = document.querySelector("textarea[name=body]");
+
+		// Format body JSON by parsing and stringifying.
+		try {
+			const json = JSON.parse(body.value);
+		} catch (e) {
+			showError(e.toString());
+			return;
+		}
+
+		const data = new URLSearchParams();
+        data.append("url", document.querySelector("input[name=url]").value);
+        data.append("body", body.value);
+
+		let resp;
+		try {
+			const r = await fetch("https://dir.floss.fund/api/validate", {
+				method: "POST",
+				headers: {
+					"Content-Type": "application/x-www-form-urlencoded",
+				},
+				body: data,
+			});
+
+			resp = await r.json()
+
+			// If response is not 200, read body and show error.
+			if (r.status !== 200) {
+				showError(resp.message);
+				return;
+			}
+		} catch (e) {
+			showError(e.toString());
+			return;
+		}		
+
+		body.value = JSON.stringify(resp.data, null, 2);
+		const err = document.querySelector(".success");
+		err.style.display = 'block';
+	});
+
+	function showError(msg) {
+		const err = document.querySelector(".error");
+		err.style.display = 'block';
+		err.textContent = msg;
+	}
+</script>
+
+</body>
+</html>
