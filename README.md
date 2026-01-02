@@ -31,3 +31,7 @@ Make sure you have Docker installed and running on your machine before executing
 
 5. **Access the Served Website**
     Open your browser and navigate to `http://localhost:8000` to view the live-reloaded website.
+
+## License
+
+All files in this repository and the contents of the website are licensed under CC BY-SA 4.0
